@@ -1,17 +1,17 @@
-variable "aws_access_key" {}
-variable "aws_secret_key" {}
+# variable "aws_access_key" {}
+# variable "aws_secret_key" {}
 variable "aws_key_path" {}
 variable "aws_key_name" {}
 
 variable "aws_region" {
     description = "EC2 Region for the VPC"
-    default = "eu-west-1"
+    default = "us-west-2"
 }
 
 variable "amis" {
     description = "AMIs by region"
     default = {
-        eu-west-1 = "ami-f1810f86" # ubuntu 14.04 LTS
+        us-west-2 = "ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*" # ubuntu 14.04 LTS
     }
 }
 

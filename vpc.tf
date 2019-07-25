@@ -1,7 +1,7 @@
 resource "aws_vpc" "default" {
     cidr_block = "${var.vpc_cidr}"
     enable_dns_hostnames = true
-    tags {
+    tags = {
         Name = "terraform-aws-vpc"
     }
 }
@@ -69,7 +69,7 @@ resource "aws_security_group" "nat" {
 
     vpc_id = "${aws_vpc.default.id}"
 
-    tags {
+    tags = {
         Name = "NATSG"
     }
 }
@@ -84,7 +84,7 @@ resource "aws_instance" "nat" {
     associate_public_ip_address = true
     source_dest_check = false
 
-    tags {
+    tags = {
         Name = "VPC NAT"
     }
 }
@@ -103,7 +103,7 @@ resource "aws_subnet" "eu-west-1a-public" {
     cidr_block = "${var.public_subnet_cidr}"
     availability_zone = "eu-west-1a"
 
-    tags {
+    tags = {
         Name = "Public Subnet"
     }
 }
@@ -116,7 +116,7 @@ resource "aws_route_table" "eu-west-1a-public" {
         gateway_id = "${aws_internet_gateway.default.id}"
     }
 
-    tags {
+    tags = {
         Name = "Public Subnet"
     }
 }
@@ -135,7 +135,7 @@ resource "aws_subnet" "eu-west-1a-private" {
     cidr_block = "${var.private_subnet_cidr}"
     availability_zone = "eu-west-1a"
 
-    tags {
+    tags = {
         Name = "Private Subnet"
     }
 }
@@ -148,7 +148,7 @@ resource "aws_route_table" "eu-west-1a-private" {
         instance_id = "${aws_instance.nat.id}"
     }
 
-    tags {
+    tags = {
         Name = "Private Subnet"
     }
 }

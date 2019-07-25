@@ -39,7 +39,7 @@ resource "aws_security_group" "web" {
 
     vpc_id = "${aws_vpc.default.id}"
 
-    tags {
+    tags = {
         Name = "WebServerSG"
     }
 }
@@ -54,7 +54,7 @@ resource "aws_instance" "web-1" {
     associate_public_ip_address = true
     source_dest_check = false
 
-    tags {
+    tags = {
         Name = "Web Server 1"
     }
 }
